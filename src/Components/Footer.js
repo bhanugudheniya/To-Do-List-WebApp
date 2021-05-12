@@ -5,9 +5,10 @@ export const Footer = () => {
     const card ={
         border: "none",
         borderRadius: 0,
-        position: "absolute",
-        top: "90vh",
-        width: "100%",
+        // position: "absolute",
+        // top: "90vh",
+        // width: "100%",
+        marginTop : "3%",
     }
 
     const cardBody = {

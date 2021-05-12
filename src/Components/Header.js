@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button, Navbar, NavDropdown, Form, FormControl, Nav } from 'react-bootstrap'
+import { Button, Navbar, Form, FormControl, Nav } from 'react-bootstrap'
 import PropTypes from 'prop-types'; //import prototype
+import { Link } from "react-router-dom";
 
 export default function Header(props) { //for using props we pass parameter 'props'
     // Or we use simple title in doublle curly braces {{ }} instead of 'props' 
@@ -13,19 +14,12 @@ export default function Header(props) { //for using props we pass parameter 'pro
         <>
             <div>
                 <Navbar bg="light" expand="lg">
-                    <Navbar.Brand href="#home">{props.title}</Navbar.Brand>     {/* we call the title here which is define in App.js using 'props' ||| We pass the data from parent component(App.js) to child component(Header.js) */}
+                    <Navbar.Brand as={Link} to="/">{props.title}</Navbar.Brand>     {/* we call the title here which is define in App.js using 'props' ||| We pass the data from parent component(App.js) to child component(Header.js) */}
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Link</Nav.Link>
-                            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
+                            <Nav.Link as={Link} to="/">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/about">About</Nav.Link>
                         </Nav>
                         { props.searchBar ? <Form inline>           {/* props.searchBar(true/false) ? <if/true> : <else/false> */}
                             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -37,6 +31,7 @@ export default function Header(props) { //for using props we pass parameter 'pro
         </>
     )
 }
+
 
 // Default Props
 Header.defaultProps = {         //if data will be not pass from the parent component to child component, so this will be print default values || for demo -> remove title prop from App.js
